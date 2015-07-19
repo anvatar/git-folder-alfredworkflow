@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>5DDFE258-E0CA-46D9-B90E-82E26F1697D5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>19AE1992-E14A-4489-BEE4-A85FA7D12F89</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>D8F4F9EF-7A3C-4838-A8A0-8BB5A4E63B55</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Open in SourceTree</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>79648F03-7FC5-40C0-AA42-B5B41127ADDB</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Open in Finder</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>A25119A1-3445-4CB0-9832-778F5B1B39EC</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Open in Web Browser</string>
+			</dict>
+		</array>
+		<key>A25119A1-3445-4CB0-9832-778F5B1B39EC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D669D5A0-AA57-4AB7-8236-0E30AAE6E228</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>anvatar@gmail.com</string>
+	<key>description</key>
+	<string>Git 저장소 이용을 도와주는 Alfred 2 워크플로우</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Git Folder</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string>/Applications/iTerm.app</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>19AE1992-E14A-4489-BEE4-A85FA7D12F89</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string>/Applications/SourceTree.app</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>D8F4F9EF-7A3C-4838-A8A0-8BB5A4E63B55</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>keyword</key>
+				<string>g</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string>git_homes = [
+]
+
+import commands
+import os.path
+
+path_infos = []
+
+for gh in git_homes:
+	git_paths = commands.getoutput('find "%s" -maxdepth 2 -mindepth 2 -type d -name ".git"' % (gh,)).split('\n')
+	path_infos.extend(map(lambda p: (os.path.basename(os.path.dirname(p)), os.path.dirname(p)), git_paths))
+
+for query_term in "{query}".split():
+	path_infos = filter(lambda p: query_term in p[0], path_infos)
+
+print '&lt;?xml version="1.0"?&gt;'
+print '&lt;items&gt;'
+
+for p in path_infos:
+	print '\t&lt;item uid="%s" arg="%s" autocomplete="%s" type="file:skipcheck"&gt;' % (p[1], p[1], p[0])
+	print '\t\t&lt;title&gt;%s&lt;/title&gt;' % (p[0],)
+	print '\t\t&lt;subtitle&gt;%s&lt;/subtitle&gt;' % (p[1],)
+	print '\t\t&lt;icon type="fileicon"&gt;%s&lt;/icon&gt;' % (p[1],)
+	print '\t&lt;/item&gt;'
+
+print '&lt;/items&gt;'</string>
+				<key>title</key>
+				<string>Git Folder</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>5DDFE258-E0CA-46D9-B90E-82E26F1697D5</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>79648F03-7FC5-40C0-AA42-B5B41127ADDB</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>open {query}</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.script</string>
+			<key>uid</key>
+			<string>D669D5A0-AA57-4AB7-8236-0E30AAE6E228</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>import os
+import commands
+
+os.chdir('{query}')
+
+remote_info = commands.getoutput('git remote -v').split('\n')[0]
+remote_repo = remote_info.split()[1]
+
+if remote_repo.startswith('http'):
+	remote_url = '.'.join(remote_repo.split('.')[:-1])
+else:
+	remote_site = remote_repo.split('@')[1].split(':')[0]
+	remote_path = remote_repo.split(':')[1].split('.')[0]
+	remote_url = 'http://%s/%s' % (remote_site, remote_path)
+
+print remote_url
+</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>A25119A1-3445-4CB0-9832-778F5B1B39EC</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>19AE1992-E14A-4489-BEE4-A85FA7D12F89</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>5DDFE258-E0CA-46D9-B90E-82E26F1697D5</key>
+		<dict>
+			<key>ypos</key>
+			<real>190</real>
+		</dict>
+		<key>79648F03-7FC5-40C0-AA42-B5B41127ADDB</key>
+		<dict>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
+		<key>A25119A1-3445-4CB0-9832-778F5B1B39EC</key>
+		<dict>
+			<key>ypos</key>
+			<real>370</real>
+		</dict>
+		<key>D669D5A0-AA57-4AB7-8236-0E30AAE6E228</key>
+		<dict>
+			<key>ypos</key>
+			<real>370</real>
+		</dict>
+		<key>D8F4F9EF-7A3C-4838-A8A0-8BB5A4E63B55</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>https://github.com/anvatar/git-folder-alfredworkflow</string>
+</dict>
+</plist>
