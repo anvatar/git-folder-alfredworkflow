@@ -1,16 +1,4 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [Git Folder 워크플로우](#git-folder-%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C%EC%9A%B0)
-  - [설치](#%EC%84%A4%EC%B9%98)
-  - [설정 변경](#%EC%84%A4%EC%A0%95-%EB%B3%80%EA%B2%BD)
-  - [사용 방법](#%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95)
-  - [사용자화](#%EC%82%AC%EC%9A%A9%EC%9E%90%ED%99%94)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# Git Folder 워크플로우
+# git-folder 워크플로우
 
 OS X에서 Git 저장소를 다루다보면 다음과 같은 동작을 매일 반복적으로 수행하게 됩니다.
 
@@ -28,9 +16,9 @@ OS X에서 Git 저장소를 다루다보면 다음과 같은 동작을 매일 �
 * [Alfred 2](http://www.alfredapp.com)
 * [Alfred 2 Powerpack](https://buy.alfredapp.com) (유료)
 
-[Git Folder.alfredworkflow](https://github.daumkakao.com/holden-ahn/documents/raw/master/productivity/Git%20Folder.alfredworkflow)을 다운로드 하고 실행하면 Alfred 환경설정창이 열리면서 워크플로우 불러오기 대화상자가 나타납니다. [Import] 버튼을 누르면 "Git Folder"라는 이름의 워크플로우가 생성됩니다. 이 워크플로우는 다음 그림과 같이 구성되어 있습니다.
+[최신 릴리즈 페이지](https://github.com/anvatar/git-folder-alfredworkflow/releases/latest) 에서 `git-folder.alfredworkflow` 파일을 다운로드 하고 실행하면 Alfred 환경설정창이 열리면서 워크플로우 불러오기 대화상자가 나타납니다. [Import] 버튼을 누르면 "git-folder"라는 이름의 워크플로우가 생성됩니다. 이 워크플로우는 다음 그림과 같이 구성되어 있습니다.
 
-![](images/git_folder_workflow.png)
+![](images/git-folder_workflow.png)
 
 ## 설정 변경
 
@@ -59,7 +47,7 @@ git_homes = [
 
 Alfred 검색창을 띄우고 `g`를 입력하고 스페이스바를 누릅니다. 그리고 쿼리를 입력하기 시작하면 다음 그림처럼 디렉토리명이 입력한 단어들을 모두 포함하는 로컬 저장소만 필터링 되어 목록에 나타납니다.
 
-![](images/git_folder_screenshot.png)
+![](images/git-folder_screenshot.png)
 
 현재 하이라이트 되어 있는 항목에 대해 다음과 같은 명령을 내릴 수 있습니다.
 

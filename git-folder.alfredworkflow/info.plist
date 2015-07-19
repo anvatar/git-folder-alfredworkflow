@@ -62,7 +62,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Git Folder</string>
+	<string>git-folder</string>
 	<key>objects</key>
 	<array>
 		<dict>
